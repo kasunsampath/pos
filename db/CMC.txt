@@ -1,0 +1,249 @@
+drop database bizMart;
+create database bizMart;
+use bizMart;
+create table login(
+emp_Id varchar(20),
+username varchar(100),
+password varchar(100),
+usertype varchar(100),
+primary key(username)
+);
+insert into login values('abcd','dgplq','admin');
+select * from login;
+desc login;
+insert into login values('','','user');
+select * from login;
+desc login;
+
+create table supplier(
+supid varchar(100),
+fname varchar(100),
+lname varchar(100),
+mobile varchar(20),
+gender varchar(100),
+no varchar(100),
+street varchar(100),
+city varchar(100),
+
+primary key(supid)
+);
+create table customer(
+cusid varchar(100),
+fname varchar(100),
+lname varchar(100),
+mobile varchar(20),
+gender varchar(100),
+no varchar(100),
+street varchar(100),
+city varchar(100),
+
+primary key(cusid)
+);
+
+
+create table category(
+categoryname varchar(100),
+primary key(categoryname)
+);
+
+
+
+create table item(
+itemid varchar(100),
+itemname varchar(100),
+category varchar(100),
+
+pup double,
+sup double,
+
+primary key(itemid)
+);
+
+create table grn(
+grnNo varchar(100),
+supid varchar(100),
+itemid varchar(100),
+itemname varchar(100),
+category varchar(100),
+pup double,
+sup double,
+qty double,
+tot double,
+
+grndate date
+);
+
+create table grnsummery(
+grnNo varchar(100),
+supid varchar(100),
+grntotal double,
+cash double,
+cheque double,
+balance double,
+grndate date
+
+);
+create table invoice(
+invoiceno varchar(100),
+cusid varchar(100),
+itemid varchar(100),
+itemname varchar(100),
+category varchar(100),
+
+sup double,
+qty double,
+tot double,
+invodate date
+
+);
+
+
+create table invoicesummery(
+invoiceno varchar(100),
+cusid varchar(100),
+invototal double,
+cash double,
+cheque double,
+balance double,
+invodate date
+
+);
+
+
+
+create table stock(
+itemid varchar(100),
+supid varchar(100),
+itemname varchar(100),
+category varchar(100),
+pup double,
+sup double,
+qty double
+);
+
+
+create table supplierpayment(
+supid varchar(100),
+grnNo varchar(100),
+grntot double,
+
+cash double,
+cheque double,
+balance double,
+grndate date,
+paydate date
+
+);
+create table supplierpaymentsummery(
+supid varchar(100),
+grnNo varchar(100),
+grntot double,
+
+cash double,
+cheque double,
+balance double,
+paydate date
+
+
+);
+create table customerpayment(
+cusid varchar(100),
+invoNo varchar(100),
+invotot double,
+
+cash double,
+cheque double,
+balance double,
+invodate date,
+paydate date
+
+
+);
+create table customerpaymentsummery(
+cusid varchar(100),
+invoNo varchar(100),
+invotot double,
+
+cash double,
+cheque double,
+balance double,
+paydate date
+);
+create table suppliercheque(
+chequeno varchar(100),
+supid varchar(100),
+givendate date,
+bankdipositdate date,
+chequeamount double,
+primary key(chequeno)
+);
+create table customercheque(
+chequeno varchar(100),
+cusid varchar(100),
+givendate date,
+bankdipositdate date,
+chequeamount double,
+primary key(chequeno)
+);
+create table damageitem(
+damid varchar(100),
+invoiceno varchar(100),
+itemid varchar(100),
+discription varchar(100),
+date date,
+contacno varchar(100),
+customername varchar(100),
+primary key(damid)
+);
+
+create table iteminfo(
+cusid varchar(100),
+invoiceno varchar(100),
+invotot double,
+serialnumber varchar(100)
+
+);
+create table quatation(
+qutno varchar(100),
+cusid varchar(100),
+itemid varchar(100),
+itemname varchar(100),
+category varchar(100),
+
+sup double,
+qty double,
+tot double,
+invodate date
+
+);
+
+
+create table quatationsummery(
+qutno varchar(100),
+cusid varchar(100),
+quttotal double,
+cash double,
+cheque double,
+balance double,
+invodate date
+
+);
+
+
+
+create table itemdl(
+itemid varchar(100),
+itemname varchar(100),
+category varchar(100),
+
+pup double,
+dsup double,
+
+primary key(itemid)
+);
+
+create table currentuser(
+username varchar(100),
+invoiceno varchar(100),
+invodate date
+);
